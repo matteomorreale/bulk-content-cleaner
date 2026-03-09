@@ -1,0 +1,24 @@
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/debug.log
+
+# Node
+node_modules/
+npm-debug.log
+
+# Composer
+vendor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors/IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local History
+.history/
