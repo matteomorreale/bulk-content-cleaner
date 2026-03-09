@@ -1,6 +1,6 @@
 # Bulk Content Cleaner
 
-**Versione:** 1.0.1  
+**Versione:** 1.1.0  
 **Autore:** Matteo Morreale  
 **Licenza:** GPL-2.0+  
 **Compatibilità WordPress:** 5.8+  
@@ -51,8 +51,11 @@ Dopo l'attivazione, navigare in **Bulk Cleaner** nel menu laterale dell'amminist
 
 | Opzione | Descrizione |
 |---|---|
-| **Post e Pagine** | Se selezionato, elimina tutti i post e le pagine presenti nel database |
-| **Media allegati** | Se selezionato insieme a "Post e Pagine", elimina anche i media associati a ogni post; se selezionato da solo, elimina tutti i media dalla libreria |
+| **Articoli (Post)** | Elimina tutti gli articoli standard di WordPress |
+| **Pagine** | Elimina tutte le pagine standard di WordPress |
+| **Media allegati** | Se selezionato insieme a post/pagine, elimina anche i media associati; se selezionato da solo, elimina tutti i media dalla libreria |
+| **Tassonomie vuote** | Elimina Categorie e Tag che non hanno post associati (ovvero sono vuote) |
+| **Filtro Data** | (Opzionale) Elimina solo i contenuti pubblicati in un intervallo di date specifico (Da / A) |
 | **Batch size** | Numero di elementi elaborati per ogni singola chiamata AJAX. Valori consigliati: 5–20 per server condivisi, fino a 50–100 per VPS dedicati |
 
 ### Avvio dell'operazione
@@ -120,7 +123,15 @@ Per evitare conflitti con altri plugin, il codice utilizza i seguenti prefissi u
 
 ## Changelog
 
-### 1.0.1 - 2026-03-9
+### 1.1.0 — 2026-03-09
+- **Novità:** Selezione separata per eliminare "Articoli (Post)" e "Pagine".
+- **Novità:** Filtro per data di pubblicazione (Da / A) per selezionare contenuti in un intervallo specifico.
+- **Novità:** Opzione per eliminare tassonomie vuote (Categorie e Tag) dopo la pulizia dei contenuti.
+- **Miglioramento:** Separato il conteggio dei media eliminati da quello dei post nelle statistiche.
+- **Correzione:** Risolto bug di paginazione che causava l'eliminazione incompleta dei post (offset fisso a 0).
+- **Correzione:** Migliorata la logica di feedback nel log per maggiore chiarezza.
+
+### 1.0.1 — 2026-03-09
 - Risolto problema di eliminazione incompleta (Logica di paginazione errata): Il plugin utilizzava un sistema di offset progressivo (es. pagina 1, pagina 2, pagina 3...) anche durante l'eliminazione.
 
 ### 1.0.0 — 2026-03-06

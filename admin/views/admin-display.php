@@ -30,11 +30,19 @@ if ( ! defined( 'WPINC' ) ) {
                     <label class="bcc-label"><?php esc_html_e( 'Tipo di contenuto da eliminare', 'bulk-content-cleaner' ); ?></label>
                     <div class="bcc-checkbox-group">
                         <label class="bcc-checkbox-label">
-                            <input type="checkbox" id="bcc-delete-posts" name="delete_posts" value="1" checked />
+                            <input type="checkbox" id="bcc-delete-post-type-post" name="delete_post_type_post" value="1" checked />
                             <span class="bcc-checkbox-custom"></span>
                             <span class="bcc-checkbox-text">
                                 <span class="dashicons dashicons-admin-post"></span>
-                                <?php esc_html_e( 'Post e Pagine', 'bulk-content-cleaner' ); ?>
+                                <?php esc_html_e( 'Articoli (Post)', 'bulk-content-cleaner' ); ?>
+                            </span>
+                        </label>
+                        <label class="bcc-checkbox-label">
+                            <input type="checkbox" id="bcc-delete-post-type-page" name="delete_post_type_page" value="1" checked />
+                            <span class="bcc-checkbox-custom"></span>
+                            <span class="bcc-checkbox-text">
+                                <span class="dashicons dashicons-admin-page"></span>
+                                <?php esc_html_e( 'Pagine', 'bulk-content-cleaner' ); ?>
                             </span>
                         </label>
                         <label class="bcc-checkbox-label">
@@ -45,9 +53,35 @@ if ( ! defined( 'WPINC' ) ) {
                                 <?php esc_html_e( 'Media allegati', 'bulk-content-cleaner' ); ?>
                             </span>
                         </label>
+                        <label class="bcc-checkbox-label">
+                            <input type="checkbox" id="bcc-delete-terms" name="delete_terms" value="1" />
+                            <span class="bcc-checkbox-custom"></span>
+                            <span class="bcc-checkbox-text">
+                                <span class="dashicons dashicons-tag"></span>
+                                <?php esc_html_e( 'Tassonomie vuote (Categorie e Tag)', 'bulk-content-cleaner' ); ?>
+                            </span>
+                        </label>
                     </div>
                     <p class="bcc-description">
-                        <?php esc_html_e( 'Se selezioni solo "Media allegati", verranno eliminati tutti i media dalla libreria. Se selezioni "Post e Pagine" insieme a "Media allegati", verranno eliminati i post con i loro media associati.', 'bulk-content-cleaner' ); ?>
+                        <?php esc_html_e( 'Seleziona cosa eliminare. Le tassonomie verranno eliminate solo se non hanno post associati (ovvero sono vuote).', 'bulk-content-cleaner' ); ?>
+                    </p>
+                </div>
+
+                <!-- Date Range -->
+                <div class="bcc-form-group">
+                    <label class="bcc-label"><?php esc_html_e( 'Filtra per Data di Pubblicazione', 'bulk-content-cleaner' ); ?></label>
+                    <div class="bcc-date-group">
+                        <div class="bcc-date-input">
+                            <label for="bcc-date-from"><?php esc_html_e( 'Da:', 'bulk-content-cleaner' ); ?></label>
+                            <input type="date" id="bcc-date-from" name="date_from" class="bcc-input" />
+                        </div>
+                        <div class="bcc-date-input">
+                            <label for="bcc-date-to"><?php esc_html_e( 'A:', 'bulk-content-cleaner' ); ?></label>
+                            <input type="date" id="bcc-date-to" name="date_to" class="bcc-input" />
+                        </div>
+                    </div>
+                    <p class="bcc-description">
+                        <?php esc_html_e( 'Lascia vuoto per eliminare tutto indipendentemente dalla data. Questo filtro si applica a Articoli e Pagine.', 'bulk-content-cleaner' ); ?>
                     </p>
                 </div>
 

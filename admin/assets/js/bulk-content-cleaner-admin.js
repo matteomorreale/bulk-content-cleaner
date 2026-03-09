@@ -5,7 +5,7 @@
  * All requests use a WordPress nonce for security (idempotent design).
  *
  * @author Matteo Morreale
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 (function ($) {
@@ -148,9 +148,13 @@
             return;
         }
 
-        var deletePosts = $('#bcc-delete-posts').is(':checked') ? '1' : '0';
+        var deletePostTypePost = $('#bcc-delete-post-type-post').is(':checked') ? '1' : '0';
+        var deletePostTypePage = $('#bcc-delete-post-type-page').is(':checked') ? '1' : '0';
         var deleteMedia = $('#bcc-delete-media').is(':checked') ? '1' : '0';
+        var deleteTerms = $('#bcc-delete-terms').is(':checked') ? '1' : '0';
         var batchSize   = parseInt($('#bcc-batch-size').val(), 10) || 5;
+        var dateFrom    = $('#bcc-date-from').val();
+        var dateTo      = $('#bcc-date-to').val();
 
         $.ajax({
             url:    bcc_ajax.ajax_url,
@@ -158,10 +162,14 @@
             data:   {
                 action:       'bcc_delete_posts',
                 nonce:        bcc_ajax.nonce,
-                delete_posts: deletePosts,
+                delete_post_type_post: deletePostTypePost,
+                delete_post_type_page: deletePostTypePage,
                 delete_media: deleteMedia,
+                delete_terms: deleteTerms,
                 batch_size:   batchSize,
                 offset:       bcc.offset,
+                date_from:    dateFrom,
+                date_to:      dateTo
             },
             success: function (response) {
                 if (!response.success) {
@@ -238,24 +246,21 @@
     // Event handlers
     // -----------------------------------------------------------------------
 
-    function onStartClick() {
-        var deletePosts = $('#bcc-delete-posts').is(':checked');
-        var deleteMedia = $('#bcc-delete-media').is(':checked');
+    function onStartClick(e) {
+        if (e) e.preventDefault();
 
-        if (!deletePosts && !deleteMedia) {
-            alert(bcc_ajax.i18n.select_type);
+        var deletePostTypePost = $('#bcc-delete-post-type-post').is(':checked');
+        var deletePostTypePage = $('#bcc-delete-post-type-page').is(':checked');
+        var deleteMedia = $('#bcc-delete-media').is(':checked');
+        var deleteTerms = $('#bcc-delete-terms').is(':checked');
+
+        if (!deletePostTypePost && !deletePostTypePage && !deleteMedia && !deleteTerms) {
+            alert(bcc_ajax.i18n.select_type || 'Seleziona almeno un tipo di contenuto da eliminare.');
             return;
         }
 
         // Confirmation dialog
-        var confirmMsg;
-        if (deletePosts && deleteMedia) {
-            confirmMsg = bcc_ajax.i18n.confirm_both;
-        } else if (deletePosts) {
-            confirmMsg = bcc_ajax.i18n.confirm_posts;
-        } else {
-            confirmMsg = bcc_ajax.i18n.confirm_media;
-        }
+        var confirmMsg = bcc_ajax.i18n.confirm_generic;
 
         if (!window.confirm(confirmMsg)) {
             return;

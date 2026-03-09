@@ -2,7 +2,7 @@
  * Bulk Content Cleaner - Admin Styles
  *
  * @author Matteo Morreale
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 /* =========================================================================
@@ -220,6 +220,24 @@
 .bcc-input-wrapper {
     display: flex;
     align-items: center;
+}
+
+/* Date Input */
+.bcc-date-group {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.bcc-date-input {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bcc-date-input label {
+    font-size: 13px;
+    color: var(--bcc-text-muted);
 }
 
 .bcc-input {

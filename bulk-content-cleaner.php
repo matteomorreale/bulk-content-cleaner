@@ -3,7 +3,7 @@
  * Plugin Name: Bulk Content Cleaner
  * Plugin URI: https://matteomorreale.com
  * Description: A plugin to bulk delete posts and media attachments.
- * Version: 1.0.1
+ * Version: 1.1.0
  * Author: Matteo Morreale
  * Author URI: https://matteomorreale.com
  * License: GPL-2.0+
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin constants
-define( 'BCC_VERSION', '1.0.0' );
+define( 'BCC_VERSION', '1.1.0' );
 define( 'BCC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BCC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
