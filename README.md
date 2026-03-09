@@ -1,6 +1,6 @@
 # Bulk Content Cleaner
 
-**Versione:** 1.0.0  
+**Versione:** 1.0.1  
 **Autore:** Matteo Morreale  
 **Licenza:** GPL-2.0+  
 **Compatibilità WordPress:** 5.8+  
@@ -119,6 +119,9 @@ Per evitare conflitti con altri plugin, il codice utilizza i seguenti prefissi u
 ---
 
 ## Changelog
+
+### 1.0.1 - 2026-03-9
+- Risolto problema di eliminazione incompleta (Logica di paginazione errata): Il plugin utilizzava un sistema di offset progressivo (es. pagina 1, pagina 2, pagina 3...) anche durante l'eliminazione.
 
 ### 1.0.0 — 2026-03-06
 - Prima release stabile.
